@@ -3,6 +3,7 @@ import passport from "passport";
 import session from "express-session";
 import "./config/passport.js";
 import authRoutes from "./routes/authRoutes.js"
+import cors from "cors";
 
 const app = express();
 const port = 3001;
@@ -14,6 +15,10 @@ app.use(session({
     saveUninitialized: true,
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+app.use(cors({
+  origin : 'http://localhost:3000',
+  credentials: true
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());

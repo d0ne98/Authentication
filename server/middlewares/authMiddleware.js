@@ -4,3 +4,7 @@ export default function ensureAthenticated(req, res, next) {
     }
     res.status(401).json({ message: "Unauthorized" });
 }
+
+
+// use this for protected Routes like this
+// router.post('/create', ensureAuthenticated, articleController.createArticle);
